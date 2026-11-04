@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Earth Jukebox — Listen to the Planet</title>
+  <title>Earth Jukebox — La Tierra tiene una banda sonora</title>
   <meta name="description" content="Explora sonidos reales del planeta, descubre su ciencia y crea música con la naturaleza." />
+  <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/main.css" />
-<script src="config.js"></script>\n</head>
+  <script src="config.js"></script>
+</head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
@@ -17,45 +19,54 @@
     </div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú">☰</button>
     <nav id="site-nav" class="site-nav" aria-label="Principal">
-      <a href="index.html">Inicio</a>
+      <a href="index.html" aria-current="page">Inicio</a>
       <a href="pages/sounds.html">Sonidos de la Tierra</a>
       <a href="pages/explorer.html">Explorador del Planeta</a>
       <a href="pages/music.html">Música de la Tierra</a>
-      <a href="pages/compositions.html">Mis composiciones</a>
-      <a href="pages/favorites.html">Favoritos</a>
-      <a href="pages/profile.html">Perfil</a>
+      <a href="pages/account.html">Cuenta</a>
     </nav>
   </header>
 
   <main id="contenido">
-    <section class="hero">
-      <h1>Escucha el planeta. Descubre la ciencia. Crea con la naturaleza.</h1>
-      <p>Earth Jukebox conecta grabaciones reales de la Tierra, datos científicos verificables y experiencias musicales interactivas.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="pages/sounds.html">Explorar sonidos</a>
-        <a class="btn btn-secondary" href="pages/explorer.html">Abrir mapa</a>
+    <section class="hero hero-earth">
+      <div class="hero-bg" style="background-image:url('https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/1280px-The_Earth_seen_from_Apollo_17.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail');" aria-hidden="true"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Earth Jukebox</p>
+        <h1>La Tierra tiene una banda sonora.</h1>
+        <p class="hero-lead">Explora grabaciones reales de nuestro planeta, descubre la ciencia que las produce y transfórmalas en música.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="pages/sounds.html">Explorar sonidos</a>
+          <a class="btn btn-secondary" href="pages/explorer.html">Abrir el mapa</a>
+        </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="carousel-title">
-      <h2 id="carousel-title">Vista previa de fenómenos del planeta</h2>
-      <div id="hero-carousel" class="carousel" aria-roledescription="carrusel" aria-label="Fenómenos del planeta">
+    <section class="section" aria-labelledby="featured-title">
+      <h2 id="featured-title">Sonidos destacados</h2>
+      <p>Grabaciones reales con procedencia verificable.</p>
+      <div id="hero-carousel" class="carousel" aria-roledescription="carrusel" aria-label="Sonidos destacados">
         <div class="carousel-viewport">
           <div class="carousel-slide is-active" aria-hidden="false">
-            <h3>Volcanes</h3>
-            <p>Actividad geológica real registrada en distintas regiones.</p>
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/ISS-20_Thunderstorms_on_the_Brazilian_Horizon.jpg/500px-ISS-20_Thunderstorms_on_the_Brazilian_Horizon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Tormenta" loading="lazy" />
+            <div class="slide-body">
+              <h3>Trueno 01</h3>
+              <p>Descarga eléctrica en tormenta. Fuente: Wikimedia Commons.</p>
+            </div>
           </div>
           <div class="carousel-slide" aria-hidden="true">
-            <h3>Océanos</h3>
-            <p>Sonidos del mar, costas y corrientes.</p>
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Rain_drops_vehicle_mirror_window_06.jpg/500px-Rain_drops_vehicle_mirror_window_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Lluvia" loading="lazy" />
+            <div class="slide-body">
+              <h3>Sonido de lluvia</h3>
+              <p>Precipitación real. Fuente: Wikimedia Commons.</p>
+            </div>
           </div>
           <div class="carousel-slide" aria-hidden="true">
-            <h3>Tormentas</h3>
-            <p>Fenómenos atmosféricos convertidos en datos y sonido.</p>
-          </div>
-          <div class="carousel-slide" aria-hidden="true">
-            <h3>Hielo y glaciares</h3>
-            <p>Crujidos y movimientos de masas de hielo.</p>
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Waves_crashing_against_the_Santa_Cruz_Shore_%284788703579%29.jpg/500px-Waves_crashing_against_the_Santa_Cruz_Shore_%284788703579%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Olas" loading="lazy" />
+            <div class="slide-body">
+              <h3>Olas del océano</h3>
+              <p>Oleaje en costa. Fuente: Wikimedia Commons.</p>
+            </div>
           </div>
         </div>
         <div class="carousel-controls">
@@ -64,7 +75,6 @@
             <button class="carousel-dot is-active" aria-current="true" aria-label="Diapositiva 1"></button>
             <button class="carousel-dot" aria-label="Diapositiva 2"></button>
             <button class="carousel-dot" aria-label="Diapositiva 3"></button>
-            <button class="carousel-dot" aria-label="Diapositiva 4"></button>
           </div>
           <button class="carousel-next" aria-label="Diapositiva siguiente">›</button>
         </div>
@@ -72,37 +82,38 @@
       </div>
     </section>
 
-    <section id="sonidos" class="section">
-      <h2>Sonidos de la Tierra</h2>
-      <p>Biblioteca de grabaciones auténticas de volcanes, océanos, tormentas, fauna y más.</p>
-      <div class="card-grid">
-        <article class="card"><h3>Volcanes</h3><p>Actividad geológica real.</p></article>
-        <article class="card"><h3>Océanos</h3><p>Sonidos del mar y costas.</p></article>
-        <article class="card"><h3>Fauna</h3><p>Grabaciones de vida silvestre.</p></article>
+    <section class="section" aria-labelledby="experiences-title">
+      <h2 id="experiences-title">Dos experiencias, un planeta</h2>
+      <div class="experience-grid">
+        <article class="experience-card">
+          <h3>Sonidos de la Tierra</h3>
+          <p>Biblioteca de grabaciones reales con metadatos, fuentes y licencias verificables.</p>
+          <a class="btn btn-secondary" href="pages/sounds.html">Explorar sonidos</a>
+        </article>
+        <article class="experience-card">
+          <h3>Música de la Tierra</h3>
+          <p>Laboratorio para convertir variables científicas en composiciones sonoras.</p>
+          <a class="btn btn-secondary" href="pages/music.html">Abrir laboratorio</a>
+        </article>
       </div>
     </section>
 
-    <section id="explorador" class="section">
-      <h2>Explorador Sonoro del Planeta</h2>
-      <p>Mapa interactivo para descubrir qué sonidos se han registrado en cada región.</p>
-      <div id="map-placeholder" class="map-placeholder" role="img" aria-label="Mapa del planeta (próximamente)">Mapa interactivo próximamente</div>
-    </section>
-
-    <section id="musica" class="section">
-      <h2>Música de la Tierra</h2>
-      <p>Laboratorio para convertir variables científicas en composiciones sonoras.</p>
-    </section>
-
-    <section id="composiciones" class="section">
-      <h2>Mis composiciones</h2>
-      <p>Guarda y recupera tus proyectos (requiere cuenta).</p>
+    <section class="section" aria-labelledby="how-title">
+      <h2 id="how-title">Cómo funciona</h2>
+      <div class="steps-grid">
+        <div class="step"><span class="step-num">1</span><h3>Explora</h3><p>Descubre grabaciones y datos científicos por región.</p></div>
+        <div class="step"><span class="step-num">2</span><h3>Escucha</h3><p>Reproduce sonidos reales con su contexto científico.</p></div>
+        <div class="step"><span class="step-num">3</span><h3>Crea</h3><p>Transforma variables del planeta en música.</p></div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <p>© Earth Jukebox. Datos y audio con fuentes verificables y licencias documentadas.</p>
+    <p class="muted">Imágenes: Wikimedia Commons (CC). Mapas: © OpenStreetMap contributors.</p>
   </footer>
 
+  <script src="config.js"></script>
   <script type="module" src="scripts/main.js"></script>
 </body>
 </html>
