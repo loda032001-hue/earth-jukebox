@@ -87,13 +87,17 @@ def list_categories() -> list[SoundCategory]:
     return CATEGORIES
 
 
-def list_sounds(category: str | None = None, query: str | None = None) -> list[NaturalSound]:
+def list_sounds(category: str | None = None, query: str | None = None, limit: int | None = None, offset: int = 0) -> list[NaturalSound]:
     items = SEED_SOUNDS
     if category:
         items = [s for s in items if s.category == category]
     if query:
         q = query.lower()
         items = [s for s in items if q in s.name.lower() or q in (s.description or "").lower() or any(q in t for t in s.tags)]
+    if offset:
+        items = items[offset:]
+    if limit is not None:
+        items = items[:limit]
     return items
 
 

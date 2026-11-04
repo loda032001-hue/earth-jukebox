@@ -1,0 +1,25 @@
+[
+  {
+    "id": "9e389661-227e-42e4-9261-145f83d7c9a1",
+    "name": "Trueno 01",
+    "category_id": null,
+    "description": "Grabación de trueno publicada en Wikimedia Commons.",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/ISS-20_Thunderstorms_on_the_Brazilian_Horizon.jpg/500px-ISS-20_Thunderstorms_on_the_Brazilian_Horizon.jpg",
+    "audio_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Thunder_01.ogg",
+    "duration_seconds": 9,
+    "country": null,
+    "region": null,
+    "continent": null,
+    "ecosystem": null,
+    "location_precision": "unconfirmed",
+    "coordinate_source": null,
+    "latitude": null,
+    "longitude": null,
+    "recorded_at": "2023-04-30",
+    "author": "Amuzujoe",
+    "source": "Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "scientific_info": "Fenómeno atmosférico: descarga eléctrica en tormenta.",
+    "tags": ["trueno", "tormenta"]
+  }
+]

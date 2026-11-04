@@ -1,5 +1,3 @@
-import { } from "../api/client.js";
-
 const API_BASE = window.EJ_API_BASE || "http://127.0.0.1:8000";
 const listEl = document.getElementById("sounds-list");
 const emptyEl = document.getElementById("sounds-empty");
@@ -8,6 +6,12 @@ const searchInput = document.getElementById("search-input");
 const applyBtn = document.getElementById("apply-filters");
 const player = document.getElementById("audio-player");
 const detailEl = document.getElementById("sound-detail");
+const loadMoreBtn = document.getElementById("load-more");
+
+let currentOffset = 0;
+const PAGE_SIZE = 12;
+let currentCategory = "";
+let currentQuery = "";
 
 async function fetchJSON(path) {
   const res = await fetch(`${API_BASE}${path}`);
@@ -24,13 +28,7 @@ function renderCategories(cats) {
   });
 }
 
-function renderSounds(items) {
-  listEl.innerHTML = "";
-  if (!items.length) {
-    emptyEl.hidden = false;
-    return;
-  }
-  emptyEl.hidden = true;
+function appendSounds(items) {
   items.forEach((s) => {
     const card = document.createElement("article");
     card.className = "card";
@@ -71,29 +69,44 @@ function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
 }
 
-async function load() {
+async function load(reset = false) {
+  if (reset) {
+    listEl.innerHTML = "";
+    currentOffset = 0;
+    emptyEl.hidden = true;
+  }
   try {
-    const cats = await fetchJSON("/api/sounds/categories");
-    renderCategories(cats);
-    const data = await fetchJSON("/api/sounds");
-    renderSounds(data.items);
+    const params = new URLSearchParams();
+    if (currentCategory) params.set("category", currentCategory);
+    if (currentQuery) params.set("q", currentQuery);
+    params.set("limit", String(PAGE_SIZE));
+    params.set("offset", String(currentOffset));
+    const data = await fetchJSON(`/api/sounds?${params.toString()}`);
+    appendSounds(data.items);
+    currentOffset += data.items.length;
+    emptyEl.hidden = data.total > 0;
+    loadMoreBtn.hidden = currentOffset >= data.total;
   } catch (e) {
     listEl.innerHTML = `<p class="muted">No se pudo cargar el catálogo: ${escapeHtml(e.message)}</p>`;
   }
 }
 
-applyBtn.addEventListener("click", async () => {
-  const cat = catSelect.value;
-  const q = searchInput.value.trim();
-  const params = new URLSearchParams();
-  if (cat) params.set("category", cat);
-  if (q) params.set("q", q);
-  try {
-    const data = await fetchJSON(`/api/sounds?${params.toString()}`);
-    renderSounds(data.items);
-  } catch (e) {
-    listEl.innerHTML = `<p class="muted">Error: ${escapeHtml(e.message)}</p>`;
-  }
+applyBtn.addEventListener("click", () => {
+  currentCategory = catSelect.value;
+  currentQuery = searchInput.value.trim();
+  load(true);
 });
 
-load();
+loadMoreBtn.addEventListener("click", () => load(false));
+
+async function init() {
+  try {
+    const cats = await fetchJSON("/api/sounds/categories");
+    renderCategories(cats);
+  } catch (e) {
+    console.warn(e);
+  }
+  load(true);
+}
+
+init();
