@@ -1,9 +1,7 @@
-# Earth Jukebox backend dependencies (justificadas)
-fastapi==0.141.1          # API web
-uvicorn[standard]==0.53.0 # servidor ASGI
-pydantic-settings==2.15.0 # configuración tipada desde entorno
-python-dotenv==1.2.3      # carga de .env
-httpx==0.28.1             # cliente HTTP para fuentes científicas
-supabase==2.32.0          # cliente Supabase (Auth/DB/Storage)
-pytest==9.2.0             # pruebas
-pytest-asyncio==0.24.0    # pruebas async (FastAPI)
+# Earth Jukebox backend runtime dependencies
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+pydantic-settings==2.15.0
+python-dotenv==1.2.3
+httpx==0.28.1
+supabase==2.32.0
