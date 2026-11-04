@@ -39,6 +39,13 @@
 - Se añade `netlify.toml` con cabeceras de caché para JS/CSS.
 - Motivo: evitar complejidad innecesaria manteniendo compatibilidad.
 
+## CI/CD
+
+### GitHub Actions
+- Workflow `.github/workflows/ci.yml` ejecuta pytest y `node --check` en PR a `main`.
+- Usa GitHub Secrets para Supabase (opcional).
+- No despliega automáticamente.
+
 ## Decisiones iniciales (Etapa 0)
 
 1. **Leaflet 2.0 beta** disponible; usar versión estable 1.x si se detectan incompatibilidades. Decidir en Etapa 3.

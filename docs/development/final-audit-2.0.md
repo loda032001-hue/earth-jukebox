@@ -75,4 +75,29 @@ Auditoría técnica, visual, funcional y de rendimiento del estado actual del pr
 
 El proyecto está en buen estado técnico para una versión 2.0 beta. Las funcionalidades backend están verificadas. La experiencia de usuario en navegador requiere pruebas manuales antes de declarar la versión lista para producción.
 
-**Recomendación**: ejecutar pruebas manuales en navegador (audio, mapa, responsive) y añadir al menos 3 grabaciones con coordenadas verificables para demostrar el mapa.
+**Recomendación**: ejecutar pruebas manuales en navegador (audio, mapa, responsive).
+
+## 12. Grabaciones geolocalizadas añadidas
+
+Se incorporaron 3 grabaciones con coordenadas verificables (precisión aproximada, documentada):
+1. Coro del amanecer (East/West Sussex, UK) — 51.1225, -0.016667 — CC BY-SA 4.0 — Alexander Wendt.
+2. Ranas cantando (Presqu'ile, Canadá) — 43.99389, -77.71306 — CC BY-SA 3.0 — Mdf.
+3. Mercado de Idumota (Lagos, Nigeria) — 6.5244, 3.3792 — CC BY-SA 3.0 — Emeka Ogboh.
+
+Las 3 se sembraron en Supabase y están disponibles en `/api/geo/sounds`.
+
+## 13. CI/CD
+
+Se añadió `.github/workflows/ci.yml`:
+- Se ejecuta en PR a `main` y push a ramas principales.
+- Instala dependencias de desarrollo.
+- Ejecuta pytest.
+- Verifica sintaxis JS con `node --check`.
+- Usa GitHub Secrets para Supabase (opcional).
+- No despliega automáticamente.
+
+## 14. Conclusión final
+
+El proyecto está en buen estado técnico para una versión 2.0 beta. Las funcionalidades backend están verificadas. La experiencia de usuario en navegador requiere pruebas manuales antes de declarar la versión lista para producción.
+
+**La rama está lista para revisión de merge.**

@@ -76,6 +76,25 @@ Correcciones:
 - Prueba real en navegador (audio, mapa, responsive).
 - Auditoría final documentada en `docs/development/final-audit-2.0.md`.
 
+## Pre-producción (validación)
+
+### Verificado
+- Backend: 18 passed, 2 skipped.
+- JS syntax: node --check sin errores.
+- /api/scientific/sonify: 200 OK (local y desplegado).
+- Supabase: login, favoritos, composiciones OK.
+- 3 grabaciones geolocalizadas sembradas en Supabase.
+- CI/CD añadido (.github/workflows/ci.yml).
+
+### Pendiente
+- Prueba real en navegador (audio, mapa, responsive, accesibilidad).
+- Columna `source` en BD actual (ejecutar ALTER TABLE).
+
+### Riesgos
+- Sin rate limiting.
+- Sin tests frontend.
+- Sin métricas Lighthouse.
+
 ## Etapa 6 — Optimización (completada)
 
 ### Tareas completadas
