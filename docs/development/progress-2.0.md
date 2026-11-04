@@ -73,5 +73,28 @@ Correcciones:
 
 ### Tareas pendientes
 - T3.3 aplicar componentes en todas las páginas.
-- Etapa 6: optimización y pruebas.
 - Prueba real en navegador (audio, mapa, responsive).
+
+## Etapa 6 — Optimización (completada)
+
+### Tareas completadas
+- T5.1 Caché científica
+- T5.2 Optimización de imágenes
+- T5.3 Build de producción (decisión documentada)
+
+### Archivos modificados
+- `backend/app/core/cache.py` (nuevo)
+- `backend/app/scientific/nasa_power.py` (caché)
+- `netlify.toml` (nuevo)
+- `docs/decisions/technical-decisions.md`
+
+### Decisiones técnicas
+- Caché en memoria TTL 1h para NASA POWER, con locks por clave.
+- No se añade build step; assets estáticos pequeños.
+- Cabeceras de caché en Netlify.
+
+### Problemas encontrados
+- Ninguno bloqueante.
+
+### Pruebas ejecutadas
+- Backend: 18 passed, 2 skipped.
