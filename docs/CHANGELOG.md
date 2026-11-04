@@ -57,3 +57,7 @@
 - Revisión de seguridad y dependencias.
 - Documentación final.
 - Preparación para despliegue.
+
+### Dependencias (post-despliegue)
+- Separadas dependencias de runtime y desarrollo para evitar conflicto pytest/pytest-asyncio.
+- Verificada instalación limpia en entorno virtual.

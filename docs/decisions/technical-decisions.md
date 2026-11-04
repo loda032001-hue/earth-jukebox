@@ -9,6 +9,16 @@
 - Procesamiento científico: NumPy, SciPy, Librosa, SoundFile.
 - Mapas: Leaflet + OpenStreetMap.
 
+## Dependencias y despliegue
+
+### Conflicto de dependencias (Render)
+- Problema: `pytest==9.2.0` era incompatible con `pytest-asyncio==0.24.0`, que requiere `pytest>=8.2,<9`.
+- Solución: separar dependencias de runtime y desarrollo.
+  - `backend/requirements.txt`: solo dependencias de producción (sin pytest).
+  - `backend/requirements-dev.txt`: dependencias de desarrollo (`pytest==8.4.2`, `pytest-asyncio==0.24.0`).
+- Verificación: instalación limpia en entorno virtual y `pytest` ejecutado correctamente (13 passed, 2 skipped).
+- Motivo: Render solo necesita dependencias de runtime; las de prueba no deben bloquear el despliegue.
+
 ## Decisiones iniciales (Etapa 0)
 
 1. **Leaflet 2.0 beta** disponible; usar versión estable 1.x si se detectan incompatibilidades. Decidir en Etapa 3.
