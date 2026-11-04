@@ -85,6 +85,15 @@ export class AudioEngine {
     }
   }
 
+  setLayerBaseFreq(id, freq) {
+    const layer = this.layers.get(id);
+    if (!layer) return;
+    layer.baseFreq = freq;
+    if (layer.nodes && layer.nodes.source.frequency) {
+      layer.nodes.source.frequency.setTargetAtTime(freq, this.ctx.currentTime, 0.05);
+    }
+  }
+
   play() {
     this.ensureContext();
     this.layers.forEach((layer) => {

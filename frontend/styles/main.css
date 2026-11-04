@@ -109,6 +109,10 @@ body {
 .map-toolbar label { display: flex; flex-direction: column; font-size: 0.9rem; color: var(--muted); }
 .map-toolbar input { padding: 0.4rem; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-2); color: var(--text); }
 
+.data-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.data-table th, .data-table td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+.data-table th { background: var(--bg-2); color: var(--accent); }
+
 .code-block {
   background: var(--bg-2);
   border: 1px solid var(--border);
