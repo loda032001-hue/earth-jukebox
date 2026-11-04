@@ -34,7 +34,9 @@ function renderSounds(items) {
   items.forEach((s) => {
     const card = document.createElement("article");
     card.className = "card";
+    const img = s.image_url ? `<img src="${escapeHtml(s.image_url)}" alt="${escapeHtml(s.name)}" class="sound-image" loading="lazy" />` : "";
     card.innerHTML = `
+      ${img}
       <h3>${escapeHtml(s.name)}</h3>
       <p>${escapeHtml(s.description || "")}</p>
       <p class="muted">Categoría: ${escapeHtml(s.category)} · Autor: ${escapeHtml(s.author || "—")} · Licencia: ${escapeHtml(s.license || "—")}</p>

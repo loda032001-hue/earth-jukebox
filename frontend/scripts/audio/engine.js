@@ -37,7 +37,7 @@ export class AudioEngine {
       type: config.type,
       baseFreq: config.baseFreq || 220,
       volume: config.volume ?? 0.5,
-      enabled: false,
+      enabled: config.enabled ?? false,
       nodes: null,
     });
   }

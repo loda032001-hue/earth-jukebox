@@ -75,6 +75,7 @@ body {
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; }
 .card h3 { margin-top: 0; color: var(--accent); }
+.sound-image { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem; }
 
 .map-placeholder {
   margin-top: 1.5rem;

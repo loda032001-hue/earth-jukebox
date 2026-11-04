@@ -4,13 +4,13 @@ const API_BASE = window.EJ_API_BASE || "http://127.0.0.1:8000";
 const engine = new AudioEngine();
 
 const LAYER_DEFS = [
-  { id: "oceans", name: "Océanos", type: "noise", baseFreq: 400, volume: 0.4 },
-  { id: "atmosphere", name: "Atmósfera", type: "sine", baseFreq: 110, volume: 0.3 },
-  { id: "temperature", name: "Temperatura", type: "triangle", baseFreq: 440, volume: 0.3 },
-  { id: "wind", name: "Viento", type: "noise", baseFreq: 1200, volume: 0.25 },
-  { id: "geology", name: "Actividad geológica", type: "sawtooth", baseFreq: 80, volume: 0.3 },
-  { id: "fauna", name: "Fauna", type: "square", baseFreq: 660, volume: 0.2 },
-  { id: "synthetic", name: "Sonidos sintéticos", type: "sine", baseFreq: 880, volume: 0.25 },
+  { id: "oceans", name: "Océanos", type: "noise", baseFreq: 400, volume: 0.4, enabled: true },
+  { id: "atmosphere", name: "Atmósfera", type: "sine", baseFreq: 110, volume: 0.3, enabled: true },
+  { id: "temperature", name: "Temperatura", type: "triangle", baseFreq: 440, volume: 0.3, enabled: true },
+  { id: "wind", name: "Viento", type: "noise", baseFreq: 1200, volume: 0.25, enabled: false },
+  { id: "geology", name: "Actividad geológica", type: "sawtooth", baseFreq: 80, volume: 0.3, enabled: false },
+  { id: "fauna", name: "Fauna", type: "square", baseFreq: 660, volume: 0.2, enabled: false },
+  { id: "synthetic", name: "Sonidos sintéticos", type: "sine", baseFreq: 880, volume: 0.25, enabled: false },
 ];
 
 LAYER_DEFS.forEach((d) => engine.addLayer(d.id, d));
@@ -54,7 +54,7 @@ LAYER_DEFS.forEach((d) => {
   card.className = "card";
   card.innerHTML = `
     <h3>${escapeHtml(d.name)}</h3>
-    <label><input type="checkbox" data-layer="${d.id}" class="layer-toggle" /> Activar</label>
+    <label><input type="checkbox" data-layer="${d.id}" class="layer-toggle" ${d.enabled ? "checked" : ""} /> Activar</label>
     <label>Volumen <input type="range" min="0" max="1" step="0.01" value="${d.volume}" data-vol="${d.id}" class="layer-vol" /></label>
   `;
   layersEl.appendChild(card);
