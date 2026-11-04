@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mis composiciones — Earth Jukebox</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+<script src="../config.js"></script>\n</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">◉</span><span class="brand-name">Earth Jukebox</span></div>
+    <nav class="site-nav" aria-label="Principal">
+      <a href="../index.html">Inicio</a>
+      <a href="sounds.html">Sonidos de la Tierra</a>
+      <a href="explorer.html">Explorador del Planeta</a>
+      <a href="music.html">Música de la Tierra</a>
+      <a href="account.html">Cuenta</a>
+    </nav>
+  </header>
+  <main id="contenido" class="section">
+    <h1>Mis composiciones</h1>
+    <button id="load" class="btn btn-secondary">Cargar composiciones</button>
+    <div id="list" class="card-grid"></div>
+  </main>
+  <footer class="site-footer"><p>© Earth Jukebox</p></footer>
+  <script type="module">
+    const API_BASE = window.EJ_API_BASE || "http://127.0.0.1:8000";
+    document.getElementById("load").addEventListener("click", async () => {
+      const token = localStorage.getItem("ej-token");
+      if (!token) { alert("Inicia sesión primero"); return; }
+      const res = await fetch(`${API_BASE}/api/compositions?token=${encodeURIComponent(token)}`);
+      const data = await res.json();
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+      if (!Array.isArray(data) || data.length === 0) {
+        list.innerHTML = "<p class='muted'>Sin composiciones.</p>";
+        return;
+      }
+      data.forEach((c) => {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `<h3>${c.name}</h3>`;
+        list.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>

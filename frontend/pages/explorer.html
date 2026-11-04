@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explorador del Planeta — Earth Jukebox</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="../styles/main.css" />
+<script src="../config.js"></script>\n</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">◉</span><span class="brand-name">Earth Jukebox</span></div>
+    <nav class="site-nav" aria-label="Principal">
+      <a href="../index.html">Inicio</a>
+      <a href="sounds.html">Sonidos de la Tierra</a>
+      <a href="explorer.html" aria-current="page">Explorador del Planeta</a>
+      <a href="music.html">Música de la Tierra</a>
+    </nav>
+  </header>
+  <main id="contenido" class="section">
+    <h1>Explorador Sonoro del Planeta</h1>
+    <p>Descubre grabaciones reales geolocalizadas. Selecciona una ubicación y un radio.</p>
+
+    <div class="map-toolbar">
+      <label>Latitud <input id="lat" type="number" step="any" value="0" /></label>
+      <label>Longitud <input id="lon" type="number" step="any" value="0" /></label>
+      <label>Radio (km) <input id="radius" type="number" value="1000" min="1" /></label>
+      <button id="search-btn" class="btn btn-secondary">Buscar</button>
+    </div>
+
+    <div id="map" class="map-container" role="application" aria-label="Mapa interactivo del planeta"></div>
+    <p id="map-empty" class="muted">No tenemos grabaciones verificadas disponibles para esta región todavía.</p>
+
+    <section class="section">
+      <h2>Resultados</h2>
+      <div id="results" class="card-grid" aria-live="polite"></div>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© Earth Jukebox</p></footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script type="module" src="../scripts/pages/explorer.js"></script>
+</body>
+</html>

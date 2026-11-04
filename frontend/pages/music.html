@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Música de la Tierra — Earth Jukebox</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+<script src="../config.js"></script>\n</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">◉</span><span class="brand-name">Earth Jukebox</span></div>
+    <nav class="site-nav" aria-label="Principal">
+      <a href="../index.html">Inicio</a>
+      <a href="sounds.html">Sonidos de la Tierra</a>
+      <a href="explorer.html">Explorador del Planeta</a>
+      <a href="music.html" aria-current="page">Música de la Tierra</a>
+    </nav>
+  </header>
+  <main id="contenido" class="section">
+    <h1>Música de la Tierra</h1>
+
+    <section class="section">
+      <h2>Laboratorio de sonificación</h2>
+      <div class="map-toolbar">
+        <label>Latitud <input id="lat" type="number" step="any" value="40.7" /></label>
+        <label>Longitud <input id="lon" type="number" step="any" value="-74.0" /></label>
+        <label>Inicio (AAAAMMDD) <input id="start" type="text" value="20240101" /></label>
+        <label>Fin (AAAAMMDD) <input id="end" type="text" value="20240110" /></label>
+        <button id="run" class="btn btn-secondary">Sonificar</button>
+      </div>
+      <div id="rules" class="card-grid"></div>
+      <pre id="normalized" class="code-block"></pre>
+    </section>
+
+    <section class="section">
+      <h2>Laboratorio musical</h2>
+      <div class="transport">
+        <button id="play" class="btn btn-primary">Reproducir</button>
+        <button id="pause" class="btn btn-secondary">Pausar</button>
+        <button id="stop" class="btn btn-secondary">Detener</button>
+        <label>Volumen general <input id="master-vol" type="range" min="0" max="1" step="0.01" value="0.7" /></label>
+        <label>Nombre composición <input id="comp-name" type="text" placeholder="Mi composición" /></label>
+        <button id="save-comp" class="btn btn-secondary">Guardar</button>
+        <button id="load-comp" class="btn btn-secondary">Cargar guardadas</button>
+      </div>
+
+      <canvas id="viz" width="600" height="120" class="viz-canvas"></canvas>
+
+      <div id="layers" class="layers-grid"></div>
+      <div id="saved-list" class="card-grid"></div>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© Earth Jukebox</p></footer>
+  <script type="module" src="../scripts/pages/music.js"></script>
+</body>
+</html>

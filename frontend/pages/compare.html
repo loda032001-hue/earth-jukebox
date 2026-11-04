@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comparación científica — Earth Jukebox</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+<script src="../config.js"></script>\n</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">◉</span><span class="brand-name">Earth Jukebox</span></div>
+    <nav class="site-nav" aria-label="Principal">
+      <a href="../index.html">Inicio</a>
+      <a href="sounds.html">Sonidos de la Tierra</a>
+      <a href="explorer.html">Explorador del Planeta</a>
+      <a href="music.html">Música de la Tierra</a>
+      <a href="compare.html" aria-current="page">Comparación</a>
+    </nav>
+  </header>
+  <main id="contenido" class="section">
+    <h1>Comparación científica</h1>
+    <p>Compara la misma variable en dos ubicaciones/periodos (NASA POWER).</p>
+
+    <div class="compare-grid">
+      <fieldset>
+        <legend>Serie 1</legend>
+        <label>Latitud <input id="lat1" type="number" step="any" value="40.7" /></label>
+        <label>Longitud <input id="lon1" type="number" step="any" value="-74.0" /></label>
+        <label>Inicio <input id="start1" type="text" value="20240101" /></label>
+        <label>Fin <input id="end1" type="text" value="20240110" /></label>
+      </fieldset>
+      <fieldset>
+        <legend>Serie 2</legend>
+        <label>Latitud <input id="lat2" type="number" step="any" value="51.5" /></label>
+        <label>Longitud <input id="lon2" type="number" step="any" value="-0.1" /></label>
+        <label>Inicio <input id="start2" type="text" value="20240101" /></label>
+        <label>Fin <input id="end2" type="text" value="20240110" /></label>
+      </fieldset>
+    </div>
+    <label>Parámetro
+      <select id="param">
+        <option value="T2M">Temperatura (T2M)</option>
+        <option value="PRECTOTCORR">Precipitación (PRECTOTCORR)</option>
+        <option value="WS10M">Viento (WS10M)</option>
+      </select>
+    </label>
+    <button id="run" class="btn btn-primary">Comparar</button>
+    <pre id="result" class="code-block" aria-live="polite"></pre>
+  </main>
+  <footer class="site-footer"><p>© Earth Jukebox</p></footer>
+  <script type="module" src="../scripts/pages/compare.js"></script>
+</body>
+</html>
