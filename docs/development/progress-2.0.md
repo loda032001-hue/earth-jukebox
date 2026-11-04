@@ -74,6 +74,7 @@ Correcciones:
 ### Tareas pendientes
 - T3.3 aplicar componentes en todas las páginas.
 - Prueba real en navegador (audio, mapa, responsive).
+- Auditoría final documentada en `docs/development/final-audit-2.0.md`.
 
 ## Etapa 6 — Optimización (completada)
 
