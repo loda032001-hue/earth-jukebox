@@ -47,9 +47,31 @@ Rama: `redesign/earth-jukebox-2.0`
 ### Problemas encontrados
 - Sin marcadores reales (no hay coordenadas verificadas en seed). Estado vacío honesto.
 
-### Pruebas ejecutadas
-- Backend: 18 passed, 2 skipped.
+### Verificación funcional (Etapa 5)
+
+Verificaciones ejecutadas:
+- Backend pytest: 18 passed, 2 skipped.
+- Endpoint /api/geo/sounds: responde lista (vacía, sin coordenadas verificadas).
+- Endpoint /api/scientific/sonify (local y desplegado): 200 OK, reglas T2M/PRECTOTCORR/WS10M y normalizados presentes.
+- Audio URL (Wikimedia): HEAD devuelve 403 por falta de User-Agent en script; la reproducción en navegador usa GET con User-Agent del navegador (no probado en navegador real).
+- Supabase: login, guardado y recuperación de composiciones verificados manualmente (OK).
+- Mapa → laboratorio: lógica de sessionStorage implementada; no probado en navegador real.
+- Accesibilidad/responsive: revisión de código; no probado con lector de pantalla.
+
+Resultados:
+- Backend funcional.
+- Integración NASA POWER funcional.
+- Supabase persistencia funcional.
+- Mapa sin marcadores reales (estado vacío honesto).
+
+Errores encontrados:
+- Audio URL HEAD 403 (no bloqueante para reproducción en navegador).
+- Sonify en frío puede tardar (cold start de Render).
+
+Correcciones:
+- Ninguna nueva en esta verificación.
 
 ### Tareas pendientes
 - T3.3 aplicar componentes en todas las páginas.
 - Etapa 6: optimización y pruebas.
+- Prueba real en navegador (audio, mapa, responsive).
