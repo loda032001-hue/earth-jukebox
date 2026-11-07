@@ -1,6 +1,7 @@
 # Progreso — Earth Jukebox 2.0
 
 Rama: `redesign/earth-jukebox-2.0`
+Pull Request: https://github.com/loda032001-hue/earth-jukebox/pull/1
 
 ## Etapa 3 — Rediseño de interfaz y navegación (en progreso)
 
