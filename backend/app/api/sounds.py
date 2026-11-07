@@ -21,9 +21,12 @@ async def categories() -> list[SoundCategory]:
 async def sounds(
     category: str | None = Query(default=None),
     q: str | None = Query(default=None),
+    limit: int = Query(default=50, ge=1, le=200),
+    offset: int = Query(default=0, ge=0),
 ) -> SoundListResponse:
-    items = list_sounds(category=category, query=q)
-    return SoundListResponse(items=items, total=len(items))
+    items = list_sounds(category=category, query=q, limit=limit, offset=offset)
+    total = len(list_sounds(category=category, query=q))
+    return SoundListResponse(items=items, total=total)
 
 
 @router.get("/{sound_id}", response_model=NaturalSound)

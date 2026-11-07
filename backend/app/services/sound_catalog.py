@@ -80,6 +80,72 @@ SEED_SOUNDS: list[NaturalSound] = [
         location_precision="region",
         coordinate_source="place name in description (no exact coordinates)",
     ),
+    NaturalSound(
+        id="0a6d3e8a-e4e3-45fc-893d-6d905a7648a2",
+        name="Coro del amanecer (East/West Sussex, UK)",
+        category="fauna",
+        description="Grabación de campo del coro del amanecer en un pequeño bosque, una hora antes del amanecer.",
+        audio_url="https://upload.wikimedia.org/wikipedia/commons/8/84/0426AM_Dawn_Chorus_07-May-2023.ogg",
+        duration_seconds=4052,
+        country="Reino Unido",
+        region="East/West Sussex",
+        continent="Europa",
+        ecosystem="bosque",
+        latitude=51.1225,
+        longitude=-0.016667,
+        location_precision="approximate",
+        coordinate_source="GPS en descripción de Wikimedia Commons (aproximado)",
+        recorded_at="2023-05-07",
+        author="Alexander Wendt",
+        source="Wikimedia Commons",
+        license="CC BY-SA 4.0",
+        scientific_info="Coro de aves al amanecer; densidad y variedad de especies.",
+        tags=["aves", "amanecer", "bosque"],
+    ),
+    NaturalSound(
+        id="44028e3a-b9e2-467c-9da8-f7415a5f331d",
+        name="Ranas cantando (Presqu'ile, Canadá)",
+        category="fauna",
+        description="Grabación de campo de ranas (Pseudacris crucifer y Lithobates sylvaticus) en un estanque.",
+        audio_url="https://upload.wikimedia.org/wikipedia/commons/7/70/Pseudacris-crucifer-003.ogg",
+        duration_seconds=120,
+        country="Canadá",
+        region="Ontario, Presqu'ile Provincial Park",
+        continent="América del Norte",
+        ecosystem="humedal",
+        latitude=43.99389,
+        longitude=-77.71306,
+        location_precision="approximate",
+        coordinate_source="Coordenadas de Wikipedia para Presqu'ile Provincial Park (nivel de parque, no sitio exacto)",
+        recorded_at="2006-04-16",
+        author="Mdf",
+        source="Wikimedia Commons",
+        license="CC BY-SA 3.0",
+        scientific_info="Vocalización de anfibios; indicador de salud del humedal.",
+        tags=["ranas", "anfibios", "humedal"],
+    ),
+    NaturalSound(
+        id="5a3d0a00-7271-42a8-8b6f-5a491f64d816",
+        name="Mercado de Idumota (Lagos, Nigeria)",
+        category="other",
+        description="Paisaje sonoro del mercado de Idumota en Lagos.",
+        audio_url="https://upload.wikimedia.org/wikipedia/commons/a/a8/Idumota_Market_%28Emeka_Ogboh%29.ogg",
+        duration_seconds=300,
+        country="Nigeria",
+        region="Lagos",
+        continent="África",
+        ecosystem="urbano",
+        latitude=6.5244,
+        longitude=3.3792,
+        location_precision="approximate",
+        coordinate_source="Coordenadas a nivel de ciudad para Lagos, Nigeria (Wikipedia)",
+        recorded_at="2009-05-01",
+        author="Emeka Ogboh",
+        source="Wikimedia Commons",
+        license="CC BY-SA 3.0",
+        scientific_info="Paisaje sonoro urbano; diversidad acústica.",
+        tags=["mercado", "urbano", "Lagos"],
+    ),
 ]
 
 
@@ -87,13 +153,17 @@ def list_categories() -> list[SoundCategory]:
     return CATEGORIES
 
 
-def list_sounds(category: str | None = None, query: str | None = None) -> list[NaturalSound]:
+def list_sounds(category: str | None = None, query: str | None = None, limit: int | None = None, offset: int = 0) -> list[NaturalSound]:
     items = SEED_SOUNDS
     if category:
         items = [s for s in items if s.category == category]
     if query:
         q = query.lower()
         items = [s for s in items if q in s.name.lower() or q in (s.description or "").lower() or any(q in t for t in s.tags)]
+    if offset:
+        items = items[offset:]
+    if limit is not None:
+        items = items[:limit]
     return items
 
 
